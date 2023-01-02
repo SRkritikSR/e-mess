@@ -27,6 +27,7 @@ const adminDashboard = ({
         <br/>
         <div className="buttons">
         <Link to="/add_item" className="btn btn-primary">Add In the Table</Link>
+        {/* <Link to="/add_delete" className="btn btn-primary">Delete from the table</Link> */}
         </div>
         </Fragment>;
 };

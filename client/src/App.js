@@ -45,7 +45,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
+           <Navbar />  
           <Alert />
           <Routes>
             <Route path="/" element={<FirstPage />} />

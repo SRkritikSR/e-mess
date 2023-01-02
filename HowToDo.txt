@@ -1,0 +1,29 @@
+	REDUX REDUX REDUX
+
+The reducers from the react redux file, lies in the reducers folder which contains all the reducer
+with the proper action(type and payload) and state(initial, and changed)
+
+
+Connect is like a wrapper, it RETURNS A FUNCTION and then that functin wraps whatever component is there.
+connect() // returns the higher order component(read more...)
+connect () (componentName) the component returned WRAPS THE componentName.
+
+
+mapStatetoprops(state) // here the state is the STATE OF THE STORE.
+return {
+	propName: state.(what property we want from the state)
+
+}
+
+// we are mapping
+
+connect(mapStatetoprops) (A)
+
+// the connect(map state to props) tells that we want all the properties returned from the map state to prop function from our 
+redux store. 
+this higher order component then wraps the component A and provides it with the required data	
+
+
+
+
+//Always pass a constant in axios post (Refer to FirstPage ) , and DO NOT DIRECTLY pass an object.

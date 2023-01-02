@@ -28,7 +28,6 @@ export const loadUser = () => async (dispatch) => {
     }
 
     try {
-        
         const res = await axios.get(`${API}/auth`);
         dispatch({
             type: USER_LOADED,
@@ -86,7 +85,7 @@ export const loadAdmin = () => async (dispatch) => {
             type: ADMIN_LOADED,
             payload: res.data
         });
-        return <Navigate to="/admindashboard" />;
+        return <Navigate to="/" />;
     // }
 
   };
@@ -138,7 +137,7 @@ export const admin_register = ({ name,email,password }) => async dispatch =>{
 
     const body = JSON.stringify({name,email,password});
 
-    // try {
+    try{
         const res = await axios.post(`${API}/admin`,body,config);
     
         dispatch({
@@ -148,19 +147,19 @@ export const admin_register = ({ name,email,password }) => async dispatch =>{
 
         dispatch(loadAdmin());
 
-    //   }
-    //    catch (err) {
-    //     const errors = err.response.data.errors;
+      }
+       catch (err) {
+        const errors = err.response.data.errors;
 
-    //     if(errors){
-    //         errors.forEach(error => 
-    //             dispatch(setAlert(error.msg,'danger'))); 
-    //     }
-    //     dispatch({
-    //     type: ADMIN_REGISTER_FAIL
-    //     });
-    //   }
-        return <Navigate to="/admindashboard" />;
+        if(errors){
+            errors.forEach(error => 
+                dispatch(setAlert(error.msg,'danger'))); 
+        }
+        dispatch({
+        type: ADMIN_REGISTER_FAIL
+        });
+      }
+        return <Navigate to="/" />;
 };
 
 
@@ -179,20 +178,19 @@ export const login = (email,password) => async dispatch =>{
 
     try {
         const res = await axios.post(`${API}/auth`,body,config);
-    
         dispatch({
           type: LOGIN_SUCCESS,
           payload: res.data
         });
-
+        console.log(" the result is given by ", res)
         dispatch(loadUser());
 
       } catch (err) {
         const errors = err.response.data.errors;
-
         if(errors){
             errors.forEach(error => 
-                dispatch(setAlert(error.msg,'danger'))); 
+                dispatch(setAlert(error.msg,'danger')));
+             
         }
         dispatch({
         type: LOGIN_FAIL
@@ -242,7 +240,7 @@ export const admin_login = (email,password) => async dispatch =>{
 
 //menu item add
 // export const menu_item = ( mess,item ) => {
-//     console.log("added")
+//      le.log("added")
 //     const config = {
 //         headers : {
 //             'Content-Type' : 'application/json'

@@ -1,0 +1,5 @@
+
+{
+    "mongoURI": "mongodb+srv://KritikUser:Mongo%40123@atlascluster.hnlxspl.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
+}
