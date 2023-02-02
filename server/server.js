@@ -41,6 +41,7 @@ app.use('/api/authadmin',require('./routes/api/authadmin'));
 app.use('/api/menu', require('./routes/api/menu'))
 app.use('/api/commentsection', require('./routes/api/commentsection'))
 app.use('/api/credits',require('./routes/api/credits'))
+app.use('/api/receipt',require('./routes/api/receipt'))
 
 
 

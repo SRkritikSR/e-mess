@@ -6,7 +6,7 @@ import { login } from '../../actions/auth';
 
 
 export const Login = ({ login,isAuthenticated }) => {
-
+  console.log(" The login page has been activated")
   const [formData,setFormData] = useState({
     email:'',
     password:''
@@ -39,30 +39,7 @@ export const Login = ({ login,isAuthenticated }) => {
     background: "linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
     
 }
-  return (
-    // <Fragment>
-    //   <h1 className="large text-primary">Sign In</h1>
-    //   <p className="lead"><i className="fas fa-user"></i> Log Into Your Account</p>
-    //   <form className="form" onSubmit={onSubmit}>
-    //     <div className="form-group">
-    //       <input type="email" placeholder="Email Address" name="email" value={email}  onChange={e=>onChange(e)} required />
-    //     </div>
-    //     <div className="form-group">
-    //       <input
-    //         type="password"
-    //         placeholder="Password"
-    //         name="password"
-    //         value={password} onChange={e=>onChange(e)} required
-    //         minLength="6"
-    //       />
-    //     </div>
-    //     <input type="submit" className="btn btn-primary" value="Login" />
-    //   </form>
-    //   <p className="my-1">
-    //     Don't have an account? <Link to="/register">Sign UP</Link>
-    //   </p>
-    // </Fragment>
- 
+  return ( 
     <section style={{marginTop: "10%"}}>
       <form onSubmit={onSubmit}>
       <div className="container  h-100">

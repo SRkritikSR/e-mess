@@ -34,6 +34,7 @@ import {
         }
 
         case ADMIN_LOADED:
+          console.log(" The admin is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
             return {
             ...state,
             isAuthenticated: true,
@@ -44,7 +45,7 @@ import {
         case ADMIN_REGISTER_SUCCESS:  
         case LOGIN_SUCCESS:
             localStorage.setItem('token',payload.token);
-            console.log("THe login is sucess I am in reducer function and the payload is given by ", state)
+            console.log("THe login is sucess I am in reducer function and the payload is given by ", state,payload)
             return {
                 ...state,
                 ...payload,

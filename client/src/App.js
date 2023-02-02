@@ -29,6 +29,8 @@ import { FirstPage } from './component/layouts/FirstPage';
 import AdminSecondPage from './component/layouts/AdminSecondPage';
 import { Landing1 } from './component/layouts/Landing1';
 import { Landing2 } from './component/layouts/Landing2';
+import AddReceipt from './addTable/AddReceipt';
+import ShowReceipt from './component/dashboard/ShowReceipt';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -37,6 +39,7 @@ if(localStorage.token){
 const App = () => {
 
   useEffect(() => {
+    console.log("App js is rendering vrooooom")
     store.dispatch(loadUser());
   }, []);
 
@@ -48,7 +51,9 @@ const App = () => {
            <Navbar />  
           <Alert />
           <Routes>
+        
             <Route path="/" element={<FirstPage />} />
+            {/* The / path runs automatically then*/}
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="dashboard" element={<PrivateRoute component={Dashboard} />} />
@@ -62,6 +67,8 @@ const App = () => {
             <Route path="show_data" element={<Showdata />} />
             <Route path="show_comment" element={<Showcomment />} />
             <Route path="add_comment" element={<Addcomment />} />
+            <Route path="add_receipt" element={<AddReceipt/>}/>
+            <Route path="show_receipt" element={<ShowReceipt/>}/>
             
             {/* <Route path="homepage" element={<FirstPage />} /> */}
             <Route path="verification" element={<AdminSecondPage />} />

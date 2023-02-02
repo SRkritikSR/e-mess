@@ -25,7 +25,7 @@ export const AdminLogin = ({ admin_login,isAuthenticated }) => {
 
   //Redirect if admin looged in
   if (isAuthenticated) {
-    // console.log(1);
+    console.log("admin logged in ");
     return <Navigate to="/" />;
   }
   const customGradient={
@@ -33,6 +33,7 @@ export const AdminLogin = ({ admin_login,isAuthenticated }) => {
     /* fallback for old browsers */
     background: "#6a11cb",
     
+
     /* Chrome 10-25, Safari 5.1-6 */
     background: "-webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
     

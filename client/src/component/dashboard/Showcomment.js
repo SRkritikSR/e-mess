@@ -11,6 +11,7 @@ function TableData({auth: {user}}) {
  
     useEffect(() => {
         fetchData()
+         
     },[])
  
  

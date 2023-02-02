@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 export const Landing2 = ({ isAuthenticated }) => {
 
-  if(isAuthenticated){
-    return <Navigate to="/dashboard" />;
-  }
+  // if(isAuthenticated){
+  //   return <Navigate to="/dashboard" />;
+  // }
 
   return (
     <section className="landing">
@@ -15,8 +15,14 @@ export const Landing2 = ({ isAuthenticated }) => {
       <div className="landing-inner">
         <h1 className="x-large">Mess Management</h1>
         <div className="buttons">
-          <Link to="/register" className="btn btn-primary">Sign Up</Link>
-          <Link to="/login" className="btn btn-primary">Login</Link>
+
+            {/* <!-- header --> */}
+            <header id="home" className="header" style={{display: 'flex', justifyContent: 'center', alignItems: "center"}}>
+                <div className=" text-white text-center">
+                    <h1 className="display-2 font-weight-bold my-3">Birla Mess</h1>
+                    <h2 className="display-4 mb-5"><i>Always fresh</i></h2>
+                </div>
+            </header>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ router.post('/', async (req,res)=> {
     try {
         
         let NewCredits = new Credits({
-            credits,
+            credits
         });
 
         await NewCredits.save();
