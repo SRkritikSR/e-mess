@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../tabledata.css';
-
-
+import { API } from '../../config';
 function TableData() {
     const [data, getData] = useState([])
-    const URL = 'http://localhost:5000/api/menu';
+    const URL = `${API}/menu`;
 
  
     useEffect(() => {

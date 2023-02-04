@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import '../tabledata.css';
+import { API } from '../../config';
 
 
 function TableData({auth: {user}}) {  
     const [data, getData] = useState([])
-    const URL = 'http://localhost:5000/api/commentsection';
+    const URL = `${API}/commentsection`
 
  
     useEffect(() => {

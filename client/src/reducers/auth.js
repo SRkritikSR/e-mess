@@ -25,7 +25,7 @@ import {
     switch (type) {
         case USER_LOADED:
           // changed on 01/01/23
-          console.log(" The user is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
+          // console.log(" The user is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
           return {
             ...state,
            isAuthenticated: true, 
@@ -34,7 +34,7 @@ import {
         }
 
         case ADMIN_LOADED:
-          console.log(" The admin is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
+          // console.log(" The admin is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
             return {
             ...state,
             isAuthenticated: true,
@@ -45,7 +45,7 @@ import {
         case ADMIN_REGISTER_SUCCESS:  
         case LOGIN_SUCCESS:
             localStorage.setItem('token',payload.token);
-            console.log("THe login is sucess I am in reducer function and the payload is given by ", state,payload)
+            // console.log("THe login is sucess I am in reducer function and the payload is given by ", state,payload)
             return {
                 ...state,
                 ...payload,

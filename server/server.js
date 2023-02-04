@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const morgan = require('morgan')
+const morgan = require('morgan')                
 const fs = require('fs')
 const path = require('path')
 
@@ -12,8 +12,10 @@ connectDB();
 
 
 const cors = require('cors');
+// previously the origin values was "*" but due to hosting problems in render we have changed it to localhost 3000 or the 
+//url where the frontend of our app would be hosted.
 const corsOpt = {
-    origin: '*',
+    origin: ["http://localhost:3000", "https://e-mess-frontend.onrender.com"],
     credentials: true,
     methods: ['GET','POST','DELETE'],
     allowedHeaders: ['Content-Type', 'x-auth-token'],

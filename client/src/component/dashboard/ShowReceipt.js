@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import React, { Fragment, useState, useEffect } from 'react'
-// import { API } from '../config'
+import { API } from '../../config';
 import { Link, useLocation } from 'react-router-dom';
 const EGGBHURJI = 40;
 const EGGBOILED = 10;
@@ -18,7 +18,7 @@ const price = {
     MilkGlass: 10,
 }
 const ShowReceipt=({auth: {user}})=> {
-    const URL = 'http://localhost:5000/api/receipt';
+    const URL = `${API}/receipt`;
 
     const [data,getData]=useState([])
     useEffect(() => {

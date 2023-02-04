@@ -20,7 +20,6 @@ import setAuthToken from "../utils/serAuthToken";
 import { Navigate } from "react-router-dom";
 //Load User
 export const loadUser = () => async (dispatch) => {
-    console.log("The user is being loaded right now now now")
     if(localStorage.token){
         setAuthToken(localStorage.token);
     }

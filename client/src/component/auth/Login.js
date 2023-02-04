@@ -6,7 +6,6 @@ import { login } from '../../actions/auth';
 
 
 export const Login = ({ login,isAuthenticated }) => {
-  console.log(" The login page has been activated")
   const [formData,setFormData] = useState({
     email:'',
     password:''

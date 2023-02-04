@@ -1,4 +1,4 @@
-{
+  {
   "name": "devconnect",
   "version": "1.0.0",
   "description": "social network for developers",
@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "mocha --exit 'testing.js'"
   },
-  "author": "Arnav Deshpande",
+  "author": "Kritik Srivastava",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.26.1",

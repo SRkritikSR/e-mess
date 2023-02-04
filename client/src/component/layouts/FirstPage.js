@@ -6,9 +6,8 @@ import { logout } from '../../actions/auth';
 import Addcomment from "../../addTable/Addcomment";
 import TableData from "../dashboard/Showcomment";
 import store from '../../store';
-import { API } from '../../config';
 import Login from "../auth/Login";
-// import {API} from "../config";
+import {API} from "../../config";
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import AddReceipt from '../../addTable/AddReceipt';
@@ -235,7 +234,7 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
     )
 }
 export const FirstPage = () => {
-    const URL = 'http://localhost:5000/api/receipt';
+    const URL = `${API}/users`;
 
     const [data, getData] = useState([])
     useEffect(() => {

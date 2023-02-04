@@ -18,28 +18,28 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/#">Home</a>
+              <Link className="nav-link" to="/#">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#about">About</a>
+              <Link className="nav-link" to="/#about">About</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#about">Welcome <i style={{ color: "black" }}>{isAuthenticated ? (user?user.name:"blank") : "Logged Out"}</i></a>
+              <Link className="nav-link" to="/#about">Welcome <i style={{ color: "black" }}>{isAuthenticated ? (user?user.name:"blank") : "Logged Out"}</i></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/add_comment">Write a Review</a>
+              <Link className="nav-link" to="/add_comment">Write a Review</Link>
             </li>
           </ul>
-          <a className="navbar-brand m-auto" href="/#">
+          <Link className="navbar-brand m-auto" to="/#">
             <img src="img/BirlaLogo.jpg" className="brand-img" alt="" />
             <span className="brand-txt">Birla Mess Management</span>
             
-          </a>
+          </Link>
           <ul className="navbar-nav">
             <li className="nav-item">
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/#blog">Menu</a>
+              <Link className="nav-link" to="/#blog">Menu</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/show_receipt"> Your Receipt</Link>
@@ -66,22 +66,22 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="/#">Home</a>
+            <Link className="nav-link" to="/#">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/#about">About</a>
+            <Link className="nav-link" to="/#about">About</Link>
           </li>
         </ul>
-        <a className="navbar-brand m-auto" href="/#">
+        <Link className="navbar-brand m-auto" to="/#">
           <img src="img/BirlaLogo.jpg" className="brand-img" alt="" />
           <span className="brand-txt">Birla Mess Management</span>
-        </a>
+        </Link>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="/login"> Login</a>
+            <Link className="nav-link" to="login"> Login</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/admin_login">Admin Login</a>
+            <Link className="nav-link" to="/admin_login">Admin Login</Link>
           </li>
         </ul>
       </div>
