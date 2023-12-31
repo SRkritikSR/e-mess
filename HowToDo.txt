@@ -1,4 +1,4 @@
-	REDUX REDUX REDUX
+REDUX REDUX REDUX
 
 The reducers from the react redux file, lies in the reducers folder which contains all the reducer
 with the proper action(type and payload) and state(initial, and changed)
@@ -25,5 +25,5 @@ this higher order component then wraps the component A and provides it with the 
 
 
 
-
+// Always import the whole component, not in {} import x form y not import {x} from y else gadbad
 //Always pass a constant in axios post (Refer to FirstPage ) , and DO NOT DIRECTLY pass an object.

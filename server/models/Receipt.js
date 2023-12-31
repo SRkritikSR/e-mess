@@ -13,13 +13,17 @@ const ReceiptSchema = new mongoose.Schema({
         type:Number,
     },
     itemName: {
-        type: Array,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Food'
     },
     itemQuantity: {
         type: Array,
     },
     amount: {
         type: Number
+    },
+    confirmed: {
+        type: Boolean,
     },
     date:{
         type:Date,

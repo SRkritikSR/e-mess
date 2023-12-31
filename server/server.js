@@ -35,16 +35,21 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logger.log'),
 //define routes
 
 app.use(morgan(':date :method :url :status :res[content-length] - :response-time ms',{stream:accessLogStream}));
-app.use('/api/users',require('./routes/api/users'));
-app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/profile',require('./routes/api/profile'));
+// Register
+app.use('/api/users',require('./routes/api/users'));
+app.use('/api/employee',require('./routes/api/employee'))
 app.use('/api/admin',require('./routes/api/admin'));
+// Login
+app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/authadmin',require('./routes/api/authadmin'));
+app.use('/api/authemployee',require('./routes/api/authemployee'));
+
 app.use('/api/menu', require('./routes/api/menu'))
 app.use('/api/commentsection', require('./routes/api/commentsection'))
 app.use('/api/credits',require('./routes/api/credits'))
 app.use('/api/receipt',require('./routes/api/receipt'))
-
+// app.use('/insertFood',require('./insertFood'))
 
 
 const PORT = process.env.PORT || 5000;

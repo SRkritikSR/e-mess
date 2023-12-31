@@ -6,7 +6,8 @@ import { logout } from '../../actions/auth';
 import FirstPage from './FirstPage';
 import { HashLink } from 'react-router-hash-link';
 import Landing2 from './Landing2';
-const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
+  console.log(role)
   const URL = 'http://localhost:5000/api/receipt';
   const AuthLinks = ()=> {
     return (
@@ -90,6 +91,51 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
       </>
     )
   }
+  if (role=="admin") {
+    return (
+      <>
+      <nav className="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10" style={{ backgroundColor: "#343a40" }}>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ backgroundColor: "#343a40" }}>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/#">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/#about">About</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/#about">Welcome <i style={{ color: "black" }}>{isAuthenticated ? (user?user.name:"blank") : "Logged Out"}</i></Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/add_comment">Edit_Menu</Link>
+            </li>
+          </ul>
+          <Link className="navbar-brand m-auto" to="/#">
+            <img src="img/BirlaLogo.jpg" className="brand-img" alt="" />
+            <span className="brand-txt">Birla Mess Management</span>
+            
+          </Link>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/show_receipt">Mess Worker Review</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/show_comment"> Student Reviews</Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" onClick={logout}>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
+    )
+  }
   return (
     <>
       <Fragment>
@@ -110,9 +156,11 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
 };
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  role: PropTypes.string
 };
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  role: state.auth.role,
 });
 export default connect(mapStateToProps, { logout })(Navbar);

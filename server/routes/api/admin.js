@@ -30,7 +30,6 @@ async (req,res) => {
             return res.status(400).json({ errors: [{msg:'Account already exists'}]});
 
         }
-
         const avatar = gravatar.url(email,{
             s:'200',
             r:'pg',
@@ -51,7 +50,7 @@ async (req,res) => {
         await admin.save();
 
         const payload = {
-            admin : {
+            user : {
                 id : admin.id
             }
         }

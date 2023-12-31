@@ -154,7 +154,7 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
                                             <button className='btn btn-danger ti-minus' value={40} name="EggBhurji" onClick={(e) => (decNum(e))} ><h2></h2></button>
                                             <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggBhurji"]}`}</h2></div>
                                             <button className='btn btn-danger ti-plus' value={40} name="EggBhurji" onClick={(e) => (incNum(e))}><h2></h2></button>
-                                        </div>
+-                                        </div>
                                         <h4 className="pt20 pb20">Egg-Bhurji</h4>
                                         <p className="text-white">NON-VEG</p>
                                     </div>
@@ -233,7 +233,7 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
         </>
     )
 }
-export const FirstPage = () => {
+export const FirstPage = (admin) => {
     const URL = `${API}/users`;
 
     const [data, getData] = useState([])
@@ -252,35 +252,6 @@ export const FirstPage = () => {
                 getData(response);
             })
     }
-
-    // useEffect(() => {
-    //   onSubmit()
-
-    // }, [])
-
-    // console.log(user)
-    // // console.log(auth.user.credits)
-    // //   useEffect(() => {
-    // //     // post the new credit into the backend.
-    // console.log(" in the first page, the user object is given by::: ", user)
-    // //   }, [credits])
-    // const onSubmit = () => {
-
-    //     const config = {
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-    //     const NewObj={credits: 10000};
-    //     axios.post(`${API}/credits`, NewObj, config).then(res => {
-    //         alert("post successful");
-    //     }).catch(err =>{ console.log(err-);alert(err)});
-    //     // menu_item(mess,item);
-    //     return (
-    //         <Navigate to="/" />
-    //     )
-    // };
-
     const [credits, setCredits] = useState(100000)
     let [quantity, setQuantity] = useState({
         EggBhurji: 0,
@@ -351,18 +322,13 @@ export const FirstPage = () => {
 
 
 FirstPage.propTypes = {
-    auth: PropTypes.object,
+    admin: PropTypes.string,
 };
-
-const mapStateToProps = (state) => (
-    {
-        auth: state.auth
-    });
-
+const mapStateToProps = (state) => ({
+    admin: state.auth,
+  });
+  
 export default connect(mapStateToProps)(FirstPage);
 
 
-// map state to props, and teh connect wraps the First page arounds.
-//<mapStatetoProps auth: {state.auth}>
-//<FirstPage/>
-//</>
+

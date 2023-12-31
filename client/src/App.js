@@ -25,42 +25,41 @@ import Additem from './addTable/Additem';
 import Showdata from './component/dashboard/Showdata';
 import Showcomment from './component/dashboard/Showcomment';
 import Addcomment from './addTable/Addcomment';
-import { FirstPage } from './component/layouts/FirstPage';
+import FirstPage  from './component/layouts/FirstPage';
 import AdminSecondPage from './component/layouts/AdminSecondPage';
-import { Landing1 } from './component/layouts/Landing1';
-import { Landing2 } from './component/layouts/Landing2';
+import  Landing1  from './component/layouts/Landing1';
+import  Landing2  from './component/layouts/Landing2';
 import AddReceipt from './addTable/AddReceipt';
 import ShowReceipt from './component/dashboard/ShowReceipt';
+import Employee from './component/auth/Employee.js';
+import  EmployeeRegister  from './component/auth/EmployeeRegister.js';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
 }
-
 const App = () => {
-
   useEffect(() => {
     console.log("App js is rendering vrooooom")
     store.dispatch(loadUser());
   }, []);
-
   return(
-
     <Provider store={store}>
       <Router>
         <Fragment>
-           <Navbar />  
+          <Navbar />  
           <Alert />
           <Routes>
-        
             <Route path="/" element={<FirstPage />} />
             {/* The / path runs automatically then*/}
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="dashboard" element={<PrivateRoute component={Dashboard} />} />
             <Route path="admindashboard" element={<PrivateRoute component={adminDashboard} />} />
-            <Route path="create-profile" element={<PrivateRoute component={CreateProfile} />} />
+            <Route path="create-profile" element={<PrivateRoute component={ CreateProfile} />} />
             <Route path="admin_login" element={<Admin />} />
             <Route path="admin_register" element={<AdminReg />} />
+            <Route path="employee_login" element={<Employee/>} />
+            <Route path="employee_register" element={<EmployeeRegister />} />
             <Route path="add" element={<addColumn />} />
             <Route path="add_delete" element={<AddDeleteTableRows />} />
             <Route path="add_item" element={<Additem />} />
@@ -69,7 +68,6 @@ const App = () => {
             <Route path="add_comment" element={<Addcomment />} />
             <Route path="add_receipt" element={<AddReceipt/>}/>
             <Route path="show_receipt" element={<ShowReceipt/>}/>
-            
             {/* <Route path="homepage" element={<FirstPage />} /> */}
             <Route path="verification" element={<AdminSecondPage />} />
             <Route path="admin_landing" element={<Landing1 />} />
