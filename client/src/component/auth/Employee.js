@@ -25,7 +25,6 @@ export const Employee = ({ employee_login, isAuthenticated }) => {
 
   //Redirect if employee looged in
   if (isAuthenticated) {
-    console.log("employee logged in ");
     return <Navigate to="/" />;
   }
   const customGradient = {

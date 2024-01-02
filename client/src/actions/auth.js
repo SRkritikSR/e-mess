@@ -96,7 +96,6 @@ export const loadEmployee = () => async (dispatch) => {
 };
 //Load Admin
 export const loadAdmin = () => async (dispatch) => {
-    console.log("The admin is being loaded right now")
     if (localStorage.token) {
         setAuthToken(localStorage.token);
     }
@@ -106,7 +105,6 @@ export const loadAdmin = () => async (dispatch) => {
             type: ADMIN_LOADED,
             payload: res.data
         });
-        console.log("dispatched")
     } catch (err) {
         dispatch({
             type: AUTH_ERROR
@@ -148,7 +146,6 @@ export const register = ({ name, email, password }) => async dispatch => {
 
 //Register Employee
 export const employee_register = ({ name, email, phonenum, password }) => async dispatch => {
-    console.log("Registering employee 123")
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -228,8 +225,6 @@ export const employee_login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`${API}/authemployee`, body, config);
-        console.log(res)
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -301,8 +296,6 @@ export const admin_login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`${API}/authadmin`, body, config);
-        console.log(res)
-
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data

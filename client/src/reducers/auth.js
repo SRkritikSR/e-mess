@@ -31,9 +31,6 @@ function authReducer(state = initialState, action) {
   switch (type) {
     case USER_LOADED:
       localStorage.setItem("role","student")
-      // changed on 01/01/23
-      // console.log(" The user is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
-      
       return {
         ...state,
         isAuthenticated: true,
@@ -42,7 +39,6 @@ function authReducer(state = initialState, action) {
         role: "student",
       }
     case ADMIN_LOADED:
-      console.log(" The admin is TO BE LOADED WITH FOLLOWING STATE::", state, " AND THE FOLLOWING PAYLOAD::", payload)
       localStorage.setItem("role","admin")
       return {
         ...state,
@@ -52,10 +48,8 @@ function authReducer(state = initialState, action) {
         role: "admin",
       };
     case EMPLOYEE_LOADED:
-      console.log("employee loaded")
       // add a employee property to denote that this is an employee
       localStorage.setItem("role","employee")
-      console.log(localStorage.getItem("role"))
       return {
         ...state,
         isAuthenticated: true,
@@ -67,10 +61,7 @@ function authReducer(state = initialState, action) {
     case ADMIN_REGISTER_SUCCESS:
     case EMPLOYEE_REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      console.log("The payload is giv")
       localStorage.setItem('token', payload.token);
-      console.log(localStorage)
-      // console.log("THe login is sucess I am in reducer function and the payload is given by ", state,payload)
       return {
         ...state,
         ...payload,

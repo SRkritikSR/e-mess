@@ -17,12 +17,10 @@ function TableData() {
                 res.json())
  
             .then((response) => {
-                console.log(response);
                 getData(response);
             })
  
     }
-    // console.log(data)
     return (
         <>
         <div id="blog" className="container-fluid bg-dark text-light py-5 text-center wow fadeIn">

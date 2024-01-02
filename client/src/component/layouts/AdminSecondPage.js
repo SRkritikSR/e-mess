@@ -64,7 +64,6 @@ export const AdminSecondPage = ({ login,isAuthenticated }) => {
   const onSubmit = e => {
     e.preventDefault();
     // verification(password);
-    console.log(password)
     if(password === "123456"){
         <Navigate to="/dashboard" />;
     }

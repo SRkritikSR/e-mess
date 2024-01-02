@@ -4,10 +4,7 @@ import Tablerows from "./Tablerows";
 
 function AddDeleteTableRows(){
     const [rowsData, setRowsData] = useState([]);
-    console.log(rowsData)
-    // const rowsData = [];
     const addTableRows = ()=>{
-        // console.log("in fun")
         const rowsInput={
             name: "",
             item:""

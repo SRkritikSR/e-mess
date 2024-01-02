@@ -7,12 +7,11 @@ import FirstPage from './FirstPage';
 import { HashLink } from 'react-router-hash-link';
 import Landing2 from './Landing2';
 const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
-  console.log(role)
   const URL = 'http://localhost:5000/api/receipt';
   const AuthLinks = ()=> {
     return (
       <>
-      <nav className="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10" style={{ backgroundColor: "#343a40" }}>
+      <nav className="custom-navbar navbar navbar-expand-lg sticky-top" data-spy="affix" data-offset-top="500" style={{ backgroundColor: "#343a40" }}>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ backgroundColor: "#343a40" }}>
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -137,7 +136,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
     )
   }
   return (
-    <div style={{position: 'fixed', top: 0, width: "100%"}}>
+    
       <Fragment >
       { 
       isAuthenticated ? 
@@ -151,7 +150,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
       </>
       }
       </Fragment>
-    </div>
+    
   );
 };
 Navbar.propTypes = {

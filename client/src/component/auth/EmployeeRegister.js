@@ -28,7 +28,6 @@ export const EmployeeRegister = ({isAuthenticated, setAlert, employee_register})
       setAlert("Passwords do not match", 'danger');
     }
     else {
-      console.log("The employee data is",employee_register,setAlert,isAuthenticated)
       employee_register({ name, email, phonenum, password });
     }
   };

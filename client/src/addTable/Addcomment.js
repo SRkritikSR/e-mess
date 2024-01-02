@@ -22,6 +22,7 @@ export const Addcomment = ({auth: {user}}) => {
   });
 
   const onSubmit = e => {
+    // pass the role from localstorage, and the id from the global state
     e.preventDefault();
     const NewObj={...formData, username: user.email}
     const config = {
@@ -50,26 +51,8 @@ export const Addcomment = ({auth: {user}}) => {
   return (
     <>
       
-{/*       
-      <h1 className="large text-primary">Write Comment</h1>
-      <form className="form" onSubmit={onSubmit}>
-        
-        <div className="form-group">
-          <input type="text" placeholder="Write Mess Name" name="mess" value={mess}  onChange={e=>onChange(e)} required />
-        </div>
-        
-        <div className="form-group">
-          <input type="text" placeholder="Write Your Comment Here" name="comment" value={comment}  onChange={e=>onChange(e)} required />
-        </div>
-
-        <div className="form-group">
-          <input type="number" placeholder="Rating" name="rating" value={rating}  min="1" max="5" onChange={e=>onChange(e)} required />
-        </div>
-        
-        <input type="submit" className="btn btn-primary" value="save" />
-      </form> */}
       <form onSubmit={onSubmit}>
-      <div className="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" style={{marginTop:"8%"}} id="book-table">
+      <div className="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
       
        <div className="">
              <h2 className="section-title mb-5">Write Your Reviews</h2>
@@ -83,13 +66,7 @@ export const Addcomment = ({auth: {user}}) => {
                   <div className="col-sm-6 col-md-3 col-xs-12 my-2">
                      <input type="number" id="booktable" className="form-control form-control-lg custom-form-control" placeholder="Rating" name="rating" value={rating}  min="1" max="5" onChange={e=>onChange(e)} required />
                  </div>
-                 {/* <div className="col-sm-6 col-md-3 col-xs-12 my-2">
-                     <input type="date" id="booktable" className="form-control form-control-lg custom-form-control" placeholder="12/12/12"/>
-                 </div> 
-                 <input type="number" id="booktable" className="form-control form-control-lg custom-form-control" placeholder="Rating" name="rating" />  */}
-                 {/* value={rating} */}
              </div>
-             {/* <a href="#" type='submit' className="btn btn-lg btn-primary" id="rounded-btn" value="save">Post Review</a> */}
              <input type="submit" className="btn btn-primary" id="rounded-btn" value="Post Reviews" />
          </div>
 

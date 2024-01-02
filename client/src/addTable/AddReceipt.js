@@ -31,8 +31,6 @@ const AddReceipt = ({ auth: { user } }) => {
         ItemPrice.push(quantity[item]/price[item])
         sum=sum+quantity[item]
     })
-    console.log(ItemOrdered,ItemPrice,sum)
-
     const onConfirm = (e) => {
         const NewObj = {
             name: user.name,

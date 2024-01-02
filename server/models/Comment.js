@@ -14,10 +14,9 @@ const CommentSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    // username:{
-    //     type:String,
-    //     required: true
-    // }
+    action: {
+        type: String,
+    },
     // Generic reference field that can refer to either a User or an Employee
     author: {
         type: mongoose.Schema.Types.ObjectId,

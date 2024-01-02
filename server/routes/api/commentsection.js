@@ -13,8 +13,6 @@ router.get('/', async (req, res) => {
     const comment = await Comment.find().populate(['mess','comment','rating']);
     
     // ..................  calculate rating logic  ..................
-
-    // console.log(comment)
     var map1 = new Map();
     comment.forEach(element => {
         if(map1.has(element.mess)){
@@ -38,11 +36,6 @@ router.get('/', async (req, res) => {
         arr.push([keys,values])
 
     })
-
-    // console.log(arr)
-
-    
-
     res.json(comment);
   } 
   catch (err) {

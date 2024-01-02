@@ -15,11 +15,9 @@ let creditVal = 0
 
 const HomePage = () => {
     return (
-        <>
             <section className="landing">
-                <div className="dark-overlay">
+                <div >
                     <div className="landing-inner">
-                        <h1 className="x-large">Mess Management</h1>
                         <div className="buttons">
 
                             {/* <!-- header --> */}
@@ -33,7 +31,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
-        </>
+        
     )
 }
 const MenuTable = () => {
@@ -99,73 +97,6 @@ const MenuTable = () => {
         </div>
       </>
     );
-  
-    // return (
-    //     <div>Hayy</div>
-    //     // <>
-    //     //   <div class="bg-dark">
-    //     //         <h2 className="section-title  text-center">OUR MENU</h2>
-    //     //         <table class="table container table-dark">
-    //     //             <thead>
-    //     //                 <tr style={{ width: "12.5%", height: "30%" }}>
-    //     //                     {WeekDays.map((elem, index) => {
-    //     //                         return (
-    //     //                             <th style={{ backgroundColor: "#ff124f", color: "white" }} key={index} scope="col">{elem}</th>
-    //     //                         )
-    //     //                     })}
-    //     //                 </tr>
-    //     //             </thead>
-    //     //             <tbody>
-    //     //                 <tr style={{ width: "100%", height: "30%" }}>
-    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", whiteSpace: "nowrap", verticalAlign: 'middle' }} scope="row">BreakFast</th>
-    //     //                     {MenuItems.Breakfast.map((BreakfastItems, index) => {
-    //     //                         return (
-    //     //                             <td key={index}>{BreakfastItems}<br /><br />
-    //     //                                 <button className='btn-sm btn-danger'
-    //     //                                     onClick={() => {
-    //     //                                         return (
-    //     //                                             window.alert("Meal Booked for Tommorrow")
-    //     //                                         )
-    //     //                                     }}>Book for tommorow</button>
-    //     //                             </td>
-    //     //                         )
-    //     //                     })}
-    //     //                 </tr>
-    //     //                 <tr style={{ width: "100%", height: "30%" }}>
-    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Lunch</th>
-    //     //                     {MenuItems.Lunch.map((LunchItems, index) => {
-    //     //                         return (
-    //     //                             <td key={index}>{LunchItems}<br /><br />
-    //     //                                 <button className='btn-sm btn-danger'
-    //     //                                     onClick={() => {
-    //     //                                         return (
-    //     //                                             window.alert("Meal Booked for Tommorrow")
-    //     //                                         )
-    //     //                                     }}>Book for tommorow</button>
-    //     //                             </td>
-    //     //                         )
-    //     //                     })}
-    //     //                 </tr>
-    //     //                 <tr style={{ width: "100 %", height: "30%" }}>
-    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Dinner</th>
-    //     //                     {MenuItems.Dinner.map((DinnerItems, index) => {
-    //     //                         return (
-    //     //                             <td key={index}>{DinnerItems}<br /><br />
-    //     //                                 <button className='btn-sm btn-danger'
-    //     //                                     onClick={() => {
-    //     //                                         return (
-    //     //                                             window.alert("Meal Booked for Tommorrow")
-    //     //                                         )
-    //     //                                     }}>Book for tommorow</button>
-    //     //                             </td>
-    //     //                         )
-    //     //                     })}
-    //     //                 </tr>
-    //     //             </tbody>
-    //     //         </table>
-    //     //     </div>
-    //     //     </>
-    // )
 }
 const AboutUs = () => {
     return (
@@ -235,7 +166,7 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
                             </div>
                             <div className="col-md-3">
                                 <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/Egg-Omelette.jpg" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" style={{ objectFit: "cover" }} height="250vh" />
+                                    <img src="/img/omelette.png" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" style={{ objectFit: "cover" }} height="250vh" />
                                     <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
                                         <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
                                             <button className='btn btn-danger ti-minus' value={20} name="EggOmelette" onClick={(e) => (decNum(e))} ><h2></h2></button>
@@ -297,7 +228,6 @@ export const FirstPage = (admin) => {
 
     const [data, getData] = useState([])
     useEffect(() => {
-        console.log("First page is rendering initially now.")
         fetchData()
     }, [])
 
@@ -368,12 +298,12 @@ export const FirstPage = (admin) => {
         }
     }
     return (
-        <div data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+        <>
             <HomePage />
             <AboutUs />
             <AddOns credits={credits} setCredits={setCredits} quantity={quantity} setQuantity={setQuantity} incNum={incNum} decNum={decNum} DeductCredit={DeductCredit} />
             <MenuTable />
-        </div>
+        </>
 
     )
 }

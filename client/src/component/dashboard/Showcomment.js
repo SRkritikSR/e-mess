@@ -27,13 +27,11 @@ function TableData({auth: {user}}) {
     }
     var arr = []
     data.map((item, i) => {
-        console.log(item.username, user.email)
         if (item.username===user.email) {
         
         arr.push([item.mess,item.rating, item.comment])
         }
     })
-    console.log(arr)
     return (
         <>
             {/* <h1>Reviews</h1> */}
