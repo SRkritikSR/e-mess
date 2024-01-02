@@ -7,21 +7,16 @@ import Addcomment from "../../addTable/Addcomment";
 import TableData from "../dashboard/Showcomment";
 import store from '../../store';
 import Login from "../auth/Login";
-import {API} from "../../config";
+import { API } from "../../config";
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import AddReceipt from '../../addTable/AddReceipt';
 let creditVal = 0
-const MenuItems = {
-    Breakfast: ["Kachori, Banana, Egg-2pcs", "Pav-Bhaji, Sooji-Halwa", "Aalu-Paratha, Butter", "Chana-Poori", "Aalu-Paratha, Butter", "Panner-Paratha, Butter", "Chole-Bhature"],
-    Lunch: ["Rajma, Boondi-Raita", "Kadhi, Chokha", "Chole", "Masoor-Dal", "Rajma, Kumaoni-Raita", "Bhatt, Yellow Dal", "Veg-Pualo, Papad, Dahi"],
-    Dinner: ["Dinner", "Dinner", "Dinner", "Dinner", "Dinner", "Dinner", "Dinner",],
-}
-const WeekDays = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-const HomePage=()=> {
+
+const HomePage = () => {
     return (
         <>
-             <section className="landing">
+            <section className="landing">
                 <div className="dark-overlay">
                     <div className="landing-inner">
                         <h1 className="x-large">Mess Management</h1>
@@ -41,72 +36,136 @@ const HomePage=()=> {
         </>
     )
 }
-const MenuTable=()=> {
+const MenuTable = () => {
+    const [menuData,setMenuData]=useState([])
+    const fetchMenu = async () => {
+        try {
+            const res = await axios.get(`${API}/food/category/dinner lunch breakfast`)
+            setMenuData(res.data)
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }
+    useEffect(() => {
+        fetchMenu()
+    }, [])
+    const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const organizedData = {};
+    menuData.forEach(item => {
+      if (!organizedData[item.category]) {
+        organizedData[item.category] = {};
+      }
+      organizedData[item.category][item.day] = item.name;
+    });
+  
     return (
-        <>
-          <div class="bg-dark">
-                <h2 className="section-title  text-center">OUR MENU</h2>
-                <table class="table container table-dark">
-                    <thead>
-                        <tr style={{ width: "12.5%", height: "30%" }}>
-                            {WeekDays.map((elem, index) => {
-                                return (
-                                    <th style={{ backgroundColor: "#ff124f", color: "white" }} key={index} scope="col">{elem}</th>
-                                )
-                            })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style={{ width: "100%", height: "30%" }}>
-                            <th style={{ backgroundColor: "#ff124f", color: "black", whiteSpace: "nowrap", verticalAlign: 'middle' }} scope="row">BreakFast</th>
-                            {MenuItems.Breakfast.map((BreakfastItems, index) => {
-                                return (
-                                    <td key={index}>{BreakfastItems}<br /><br />
-                                        <button className='btn-sm btn-danger'
-                                            onClick={() => {
-                                                return (
-                                                    window.alert("Meal Booked for Tommorrow")
-                                                )
-                                            }}>Book for tommorow</button>
-                                    </td>
-                                )
-                            })}
-                        </tr>
-                        <tr style={{ width: "100%", height: "30%" }}>
-                            <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Lunch</th>
-                            {MenuItems.Lunch.map((LunchItems, index) => {
-                                return (
-                                    <td key={index}>{LunchItems}<br /><br />
-                                        <button className='btn-sm btn-danger'
-                                            onClick={() => {
-                                                return (
-                                                    window.alert("Meal Booked for Tommorrow")
-                                                )
-                                            }}>Book for tommorow</button>
-                                    </td>
-                                )
-                            })}
-                        </tr>
-                        <tr style={{ width: "100 %", height: "30%" }}>
-                            <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Dinner</th>
-                            {MenuItems.Dinner.map((DinnerItems, index) => {
-                                return (
-                                    <td key={index}>{DinnerItems}<br /><br />
-                                        <button className='btn-sm btn-danger'
-                                            onClick={() => {
-                                                return (
-                                                    window.alert("Meal Booked for Tommorrow")
-                                                )
-                                            }}>Book for tommorow</button>
-                                    </td>
-                                )
-                            })}
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            </>
-    )
+      <>
+        <div className="bg-dark">
+          <h2 className="section-title text-center">OUR MENU</h2>
+          <table className="table container table-dark">
+            <thead>
+              <tr>
+                <th style={{ backgroundColor: "#ff124f", color: "white" }}></th>
+                {weekdays.map((day, index) => (
+                  <th key={index} style={{ backgroundColor: "#ff124f", color: "white" }}>{day}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(organizedData).map((category, index) => (
+                <tr key={index}>
+                  <th style={{ backgroundColor: "#ff124f", color: "black", whiteSpace: "nowrap", verticalAlign: 'middle' }} scope="row">{category}</th>
+                  {weekdays.map((day, dayIndex) => (
+                    <td key={dayIndex}>
+                      {organizedData[category][day] && (
+                        <>
+                          {organizedData[category][day]}<br /><br />
+                          <button
+                            className='btn-sm btn-danger'
+                            onClick={() => window.alert("Meal Booked for Tomorrow")}
+                          >
+                            Book for tomorrow
+                          </button>
+                        </>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    );
+  
+    // return (
+    //     <div>Hayy</div>
+    //     // <>
+    //     //   <div class="bg-dark">
+    //     //         <h2 className="section-title  text-center">OUR MENU</h2>
+    //     //         <table class="table container table-dark">
+    //     //             <thead>
+    //     //                 <tr style={{ width: "12.5%", height: "30%" }}>
+    //     //                     {WeekDays.map((elem, index) => {
+    //     //                         return (
+    //     //                             <th style={{ backgroundColor: "#ff124f", color: "white" }} key={index} scope="col">{elem}</th>
+    //     //                         )
+    //     //                     })}
+    //     //                 </tr>
+    //     //             </thead>
+    //     //             <tbody>
+    //     //                 <tr style={{ width: "100%", height: "30%" }}>
+    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", whiteSpace: "nowrap", verticalAlign: 'middle' }} scope="row">BreakFast</th>
+    //     //                     {MenuItems.Breakfast.map((BreakfastItems, index) => {
+    //     //                         return (
+    //     //                             <td key={index}>{BreakfastItems}<br /><br />
+    //     //                                 <button className='btn-sm btn-danger'
+    //     //                                     onClick={() => {
+    //     //                                         return (
+    //     //                                             window.alert("Meal Booked for Tommorrow")
+    //     //                                         )
+    //     //                                     }}>Book for tommorow</button>
+    //     //                             </td>
+    //     //                         )
+    //     //                     })}
+    //     //                 </tr>
+    //     //                 <tr style={{ width: "100%", height: "30%" }}>
+    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Lunch</th>
+    //     //                     {MenuItems.Lunch.map((LunchItems, index) => {
+    //     //                         return (
+    //     //                             <td key={index}>{LunchItems}<br /><br />
+    //     //                                 <button className='btn-sm btn-danger'
+    //     //                                     onClick={() => {
+    //     //                                         return (
+    //     //                                             window.alert("Meal Booked for Tommorrow")
+    //     //                                         )
+    //     //                                     }}>Book for tommorow</button>
+    //     //                             </td>
+    //     //                         )
+    //     //                     })}
+    //     //                 </tr>
+    //     //                 <tr style={{ width: "100 %", height: "30%" }}>
+    //     //                     <th style={{ backgroundColor: "#ff124f", color: "black", }} scope="row">Dinner</th>
+    //     //                     {MenuItems.Dinner.map((DinnerItems, index) => {
+    //     //                         return (
+    //     //                             <td key={index}>{DinnerItems}<br /><br />
+    //     //                                 <button className='btn-sm btn-danger'
+    //     //                                     onClick={() => {
+    //     //                                         return (
+    //     //                                             window.alert("Meal Booked for Tommorrow")
+    //     //                                         )
+    //     //                                     }}>Book for tommorow</button>
+    //     //                             </td>
+    //     //                         )
+    //     //                     })}
+    //     //                 </tr>
+    //     //             </tbody>
+    //     //         </table>
+    //     //     </div>
+    //     //     </>
+    // )
 }
 const AboutUs = () => {
     return (
@@ -154,7 +213,7 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
                                             <button className='btn btn-danger ti-minus' value={40} name="EggBhurji" onClick={(e) => (decNum(e))} ><h2></h2></button>
                                             <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggBhurji"]}`}</h2></div>
                                             <button className='btn btn-danger ti-plus' value={40} name="EggBhurji" onClick={(e) => (incNum(e))}><h2></h2></button>
--                                        </div>
+                                            -                                        </div>
                                         <h4 className="pt20 pb20">Egg-Bhurji</h4>
                                         <p className="text-white">NON-VEG</p>
                                     </div>
@@ -219,13 +278,13 @@ const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, De
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <button className='btn btn-lg' onClick={(e) => {
                     return (
                         DeductCredit()
                     )
-                }} style={{ backgroundColor: "#ff124f" }}><Link  className="nav-link" state={{
+                }} style={{ backgroundColor: "#ff124f" }}><Link className="nav-link" state={{
                     quantity: quantity,
                     credits: credits - creditVal
                 }} to="add_receipt">Create Receipt</Link></button>
@@ -310,10 +369,10 @@ export const FirstPage = (admin) => {
     }
     return (
         <div data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-            <HomePage/>
+            <HomePage />
             <AboutUs />
             <AddOns credits={credits} setCredits={setCredits} quantity={quantity} setQuantity={setQuantity} incNum={incNum} decNum={decNum} DeductCredit={DeductCredit} />
-            <MenuTable/>
+            <MenuTable />
         </div>
 
     )
@@ -326,8 +385,8 @@ FirstPage.propTypes = {
 };
 const mapStateToProps = (state) => ({
     admin: state.auth,
-  });
-  
+});
+
 export default connect(mapStateToProps)(FirstPage);
 
 

@@ -137,8 +137,8 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
     )
   }
   return (
-    <>
-      <Fragment>
+    <div style={{position: 'fixed', top: 0, width: "100%"}}>
+      <Fragment >
       { 
       isAuthenticated ? 
         <>
@@ -151,7 +151,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout,role  }) => {
       </>
       }
       </Fragment>
-    </>
+    </div>
   );
 };
 Navbar.propTypes = {

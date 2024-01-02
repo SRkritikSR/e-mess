@@ -49,6 +49,7 @@ app.use('/api/menu', require('./routes/api/menu'))
 app.use('/api/commentsection', require('./routes/api/commentsection'))
 app.use('/api/credits',require('./routes/api/credits'))
 app.use('/api/receipt',require('./routes/api/receipt'))
+app.use('/api/food',require('./routes/api/food'))
 // app.use('/insertFood',require('./insertFood'))
 
 
