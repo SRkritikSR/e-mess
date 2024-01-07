@@ -24,6 +24,9 @@ const EmployeeSchema = new mongoose.Schema({
     salary: {
         type: String,
     },
+    messName: {
+        type: String,
+    },
     role: {
         type: String,
     },

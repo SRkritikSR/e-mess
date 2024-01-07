@@ -48,14 +48,13 @@ export const Login = ({ login, isAuthenticated }) => {
   };
   if (isStudent) {
     return (
-      <section style={{ marginTop: "10%" }}>
+      <section >
         <form onSubmit={onSubmit}>
-          <div className="container  h-100">
-            <div className="row d-flex justify-content-center align-items-center h-100">
-              <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div className="container mt-0  h-20" >
+            <div className="row d-flex justify-content-center align-items-center h-100" >
+              <div className="col-12 col-md-8  col-lg-6 col-xl-5">
                 <div className="card bg-dark text-white" >
                   <div className="card-body  text-center">
-
                     <div className="mb-md-5 mt-md-4 pb-5">
 
                       <h2 className="fw-bold mb-2 text-uppercase" style={{ borderRadius: "1rem" }}>Login</h2>
@@ -92,7 +91,7 @@ export const Login = ({ login, isAuthenticated }) => {
   }
   return (
 
-    <div style={{ textAlign: 'center', marginTop: '5%' }}>
+    <div style={{ textAlign: 'center'}}>
       <h1>Welcome to Your Website</h1>
       <p>Please select your role:</p>
 
@@ -108,18 +107,18 @@ export const Login = ({ login, isAuthenticated }) => {
           </div>
         </button>
 
-        <Link to="/employee_login">
+        <Link to="/employee_login" style={{textDecoration: 'none',color: 'black'}}>
           <div style={cardStyle}>
             <img
               src="/img/employee.svg"
               alt="Mess Worker"
               style={{ width: '100%', height: 'auto', borderRadius: '50%' }}
             />
-            <p>Mess Worker</p>
+            <p >Mess Worker</p>
           </div>
         </Link>
 
-        <Link to="/admin_login">
+        <Link to="/admin_login" style={{textDecoration: 'none',color: 'black'}}>
           <div style={cardStyle}>
             <img
               src="img/admin.svg"

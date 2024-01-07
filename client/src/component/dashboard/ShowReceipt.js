@@ -4,48 +4,23 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import React, { Fragment, useState, useEffect } from 'react'
 import { API } from '../../config';
-import { Link, useLocation } from 'react-router-dom';
-const EGGBHURJI = 40;
-const EGGBOILED = 10;
-const EGGOMELETTE = 40;
-const EGGCRATE = 180;
-const MILKGLASS = 10;
-const price = {
-    EggBhurji: 40,
-    EggCrate: 180,
-    EggOmelette: 20,
-    EggBoiled: 10,
-    MilkGlass: 10,
-}
 const ShowReceipt=({auth: {user}})=> {
-    const URL = `${API}/receipt`;
+    
 
-    const [data,getData]=useState([])
+    const [data,setData]=useState([])
     useEffect(() => {
-        let isCancelled=false
-        if (!isCancelled)
         fetchData()
-        return ()=> {
-            isCancelled=true
-        }
     },[])
  
  
-    const fetchData = () => {
-        fetch(URL)
-            .then((res) =>
-                res.json())
- 
-            .then((response) => {
-                getData(()=> {
-                    return (
-                        response.filter((invoice)=> {
-                            return (invoice.email===user.email)
-                        })
-                    )
-                })
-                
-            })  
+    const fetchData = async() => {
+         try {
+            const res=await axios.get(`${API}/order`)
+            setData(res.data)
+         }
+         catch (error) {
+            console.error(error)
+         }
     }   
     if (!data) return (
         <>
@@ -59,28 +34,28 @@ const ShowReceipt=({auth: {user}})=> {
         <Fragment>
             {data.map((invoice,index)=> {
                 return (
-                    <div className="container card" style={{border: "1px black solid"}}>
+                    <div className="container " style={{border: "1px black solid"}}>
                     <div className="card-body mx-4">
                         <div className="container">
                             <p className="my-5 mx-5" style={{fontSize: "30px",}}>Thank for your purchase</p>
                             <div className="row">
                                 <ul className="list-unstyled">
-                                    <li className="text-black">Name: {user.name}</li>
+                                    <li className="text-black">Name: {invoice.name}</li>
                                     <li className="text-muted mt-1"><span className="text-black">Invoice</span> {index+1}</li>
                                     <li className="text-black mt-1">{invoice.date}</li>
                                 </ul>
                                 <hr/>
                                     <hr/>
                                     </div>
-                                  {invoice.itemName.map((item,index)=> {
+                                  {invoice.items.map((item,index)=> {
                                     return (
                                         <div className="row" key={index}>
                                         <div className="col-xl-10">
-                                            <p>{item}</p>
+                                            <p>{item.name}</p>
                                         </div>
                                         <div className="col-xl-2">
                                             <p className="float-end"    >
-                                                {`${invoice.itemQuantity[index]} x ${price[item]}   ${invoice.itemQuantity[index]*price[item]}`} 
+                                                {`${item.quantity} x ${item.price}   ${item.quantity*item.price}`} 
                                             </p>
                                         </div>
                                         <hr/>

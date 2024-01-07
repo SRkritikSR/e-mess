@@ -11,6 +11,7 @@ import { API } from "../../config";
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import AddReceipt from '../../addTable/AddReceipt';
+import AddOns from './AddOns';
 let creditVal = 0
 
 const HomePage = () => {
@@ -119,110 +120,7 @@ const AboutUs = () => {
         </>
     )
 }
-const AddOns = ({ credits, setCredits, quantity, setQuantity, incNum, decNum, DeductCredit }) => {
-    return (
-        <>
-            {/* <!-- Add-ons Section  --> */}
-            <div id="blog" className="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
-                <div className="row justify-content-center">
-                    <div className="col-sm-7 col-md-4 mb-5">
-                        <ul className="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
-                            <li className="nav-item">
-                                <a className="nav-link active" id="pills-home-tab" data-toggle="pill" href="#foods" role="tab" aria-controls="pills-home" aria-selected="true" style={{ backgroundColor: "red", }}>Add-ons</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="container tab-content" id="pills-tabContent" style={{ border: "5px dashed red", padding: "2%" }}>
-                    <div className="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div className="row">
-                            <div className="col-md-3">
-                                <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/Egg-Bhurji.jpeg" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" height="250vh" />
-                                    <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
-                                            <button className='btn btn-danger ti-minus' value={40} name="EggBhurji" onClick={(e) => (decNum(e))} ><h2></h2></button>
-                                            <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggBhurji"]}`}</h2></div>
-                                            <button className='btn btn-danger ti-plus' value={40} name="EggBhurji" onClick={(e) => (incNum(e))}><h2></h2></button>
-                                            -                                        </div>
-                                        <h4 className="pt20 pb20">Egg-Bhurji</h4>
-                                        <p className="text-white">NON-VEG</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/Egg-Crate.jpeg" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" height="250vh" />
-                                    <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
-                                            <button className='btn btn-danger ti-minus' value={180} name="EggCrate" onClick={(e) => (decNum(e))} ><h2></h2></button>
-                                            <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggCrate"]}`}</h2></div>
-                                            <button className='btn btn-danger ti-plus' value={180} name="EggCrate" onClick={(e) => (incNum(e))}><h2></h2></button>
-                                        </div>
-                                        <h4 className="pt20 pb20">Egg-Crate</h4>
-                                        <p className="text-white">NON-VEG</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/omelette.png" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" style={{ objectFit: "cover" }} height="250vh" />
-                                    <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
-                                            <button className='btn btn-danger ti-minus' value={20} name="EggOmelette" onClick={(e) => (decNum(e))} ><h2></h2></button>
-                                            <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggOmelette"]}`}</h2></div>
-                                            <button className='btn btn-danger ti-plus' value={20} name="EggOmelette" onClick={(e) => (incNum(e))}><h2></h2></button>
-                                        </div>
-                                        <h4 className="pt20 pb20">Egg-Omelette</h4>
-                                        <p className="text-white">NON-VEG</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 ">
-                                <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/Boiled-Egg.jpeg" className="rounded-0 card-img-top mg-responsive" height="250vh" />
-                                    <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
-                                            <button className='btn btn-danger ti-minus' value={10} name="EggBoiled" onClick={(e) => (decNum(e))} ><h2></h2></button>
-                                            <div className='btn btn-danger'><h2 style={{ color: 'black' }}>{`${quantity["EggBoiled"]}`}</h2></div>
-                                            <button className='btn btn-danger ti-plus' value={10} name="EggBoiled" onClick={(e) => (incNum(e))}><h2></h2></button>
-                                        </div>
-                                        <h4 className="pt20 pb20">Egg-Boiled</h4>
-                                        <p className="text-white">NON-VEG</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3 mt-3">
-                                <div className="card bg-transparent border my-3 my-md-0">
-                                    <img src="/img/Milk-Glass.jpeg" alt="template by DevCRID http://www.devcrud.com/" className="rounded-0 card-img-top mg-responsive" height="250vh" />
-                                    <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'center', margin: '2%' }}>
-                                            <button className='btn btn-danger ti-minus' value={10} name="MilkGlass" onClick={(e) => (decNum(e))} ><h2></h2></button>
-                                            <div className='btn btn-danger'><h2 style={{ color: 'black', }}>{`${quantity["MilkGlass"]}`}</h2></div>
-                                            <button className='btn btn-danger ti-plus' value={10} name="MilkGlass" onClick={(e) => (incNum(e))}><h2></h2></ button>
-                                        </div>
-                                        <h4 className="pt20 pb20">Milk-Glass</h4>
-                                        <p className="text-white">VEG</p>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <button className='btn btn-lg' onClick={(e) => {
-                    return (
-                        DeductCredit()
-                    )
-                }} style={{ backgroundColor: "#ff124f" }}><Link className="nav-link" state={{
-                    quantity: quantity,
-                    credits: credits - creditVal
-                }} to="add_receipt">Create Receipt</Link></button>
-            </div>
-        </>
-    )
-}
 export const FirstPage = (admin) => {
     const URL = `${API}/users`;
 

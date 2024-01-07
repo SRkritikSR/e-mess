@@ -14,9 +14,6 @@ const CommentSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    action: {
-        type: String,
-    },
     // Generic reference field that can refer to either a User or an Employee
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +23,7 @@ const CommentSchema = new mongoose.Schema({
     // Field to specify the type of the author (either 'User' or 'Employee')
     authorType: {
         type: String,
-        enum: ['User', 'Employee'],
+        enum: ['user', 'employee'],
         required: true,
     },
 })

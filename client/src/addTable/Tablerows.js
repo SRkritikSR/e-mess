@@ -17,8 +17,6 @@ function Tablerows({rowsData, deleteTableRows, handleChange}) {
 
    
     )
-
-    // console.log("110%");
     
 }
 export default Tablerows;

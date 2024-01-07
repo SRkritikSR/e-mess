@@ -41,9 +41,9 @@ export const Employee = ({ employee_login, isAuthenticated }) => {
 
   }
   return (
-    <section style={{ marginTop: "10%" }} >
+    <section >
       <form onSubmit={onSubmit}>
-        <div className="container  h-100">
+        <div className="container  h-100 mt-0">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
               <div className="card bg-dark text-white" >

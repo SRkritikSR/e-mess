@@ -5,17 +5,13 @@ import '../tabledata.css';
 import { API } from '../../config';
 
 
-function TableData({auth: {user}}) {  
+function Showcomment({auth: {user}}) {  
     const [data, getData] = useState([])
-    const URL = `${API}/commentsection`
-
- 
+    const userId=user?user._id:""
+    const URL = `${API}/commentsection/userId/${userId}`
     useEffect(() => {
         fetchData()
-         
     },[])
- 
- 
     const fetchData = () => {
         fetch(URL)
             .then((res) =>
@@ -24,44 +20,28 @@ function TableData({auth: {user}}) {
             .then((response) => {
                 getData(response);
             })
+            .catch((error)=> {
+                console.error(error)
+            })
     }
     var arr = []
     data.map((item, i) => {
-        if (item.username===user.email) {
         
         arr.push([item.mess,item.rating, item.comment])
-        }
+        
     })
+    if (!user) return (
+        <div>
+            Loading
+        </div>
+    )
     return (
         <>
-            {/* <h1>Reviews</h1> */}
-            {/* <tbody>
-                <tr>
-                    <th>Mess Name</th>
-                    <th>Comments</th>
-                    <th>Rating</th>
-                    
-                </tr>
-                {data.map((item, i) => (
-                    
-                    <tr key={i}>
-                        <td>{item.mess}</td>
-                        <td>{item.comment}</td>
-                        <td>`${item.rating}`</td>
-                        
-                    </tr>
-                ))}
-            </tbody>
-             */}
-
-
-
-
-                 {/* <!-- REVIEWS Section  --> */}
-     <div id="testmonial" className="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items" style={{marginTop:"8%"}}>
+          
+     <div id="testmonial" className="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items" >
          <h2 className="section-title my-5 text-center">Your Reviews</h2>
          <div className="row mt-3 mb-5">
-         {arr.map((item,i)=> (
+         {user && arr.map((item,i)=> (
             <>
             <div key={i} className="col-md-4 my-5 " style={{border: "solid red 0.5"}}>
                 <div className="testmonial-card">
@@ -72,28 +52,9 @@ function TableData({auth: {user}}) {
                     </div>
                 </div>
             </div>
-            {/* <div className="col-md-4 my-3 my-md-0">
-                <div className="testmonial-card">
-                    <h3 className="testmonial-title">Steve Thomas</h3>
-                    <h6 className="testmonial-subtitle">UX/UI Designer</h6>
-                    <div className="testmonial-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum minus obcaecati cum eligendi perferendis magni dolorum ipsum magnam, sunt reiciendis natus. Aperiam!</p>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-4 my-3 my-md-0">
-                <div className="testmonial-card">
-                    <h3 className="testmonial-title">Miranda Joy</h3>
-                    <h6 className="testmonial-subtitle">Graphic Designer</h6>
-                    <div className="testmonial-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, nam. Earum nobis eligendi, dignissimos consequuntur blanditiis natus. Aperiam!</p>
-                    </div>
-                </div>
-            </div> */}
         </>
          ))}
          </div>
-         
      </div>
 
  
@@ -101,11 +62,11 @@ function TableData({auth: {user}}) {
     );
 }
  
-// export default TableData;
+// export default Showcomment;
 
 
 
-TableData.propTypes = {
+Showcomment.propTypes = {
     auth: PropTypes.object.isRequired
   };
   
@@ -114,4 +75,4 @@ TableData.propTypes = {
     auth: state.auth
   });
   
-  export default connect(mapStateToProps)(TableData);
+  export default connect(mapStateToProps)(Showcomment);

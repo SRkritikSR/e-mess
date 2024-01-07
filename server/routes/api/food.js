@@ -7,7 +7,6 @@ router.get('/category/:categoryId',auth,async (req,res)=> {
     try {
         const categoriesArray =req.params.categoryId.split(" ");
         const result = await Food.find({ category: { $in: categoriesArray } });
-        
         return res.status(200).send(result)
     }
     catch (error) {
@@ -16,4 +15,15 @@ router.get('/category/:categoryId',auth,async (req,res)=> {
     }
 
 })
+// router.post('/',auth,async(req,res)=> {
+//     try {
+//         const result=await Food.insertMany(req.body)
+//         console.log(result)
+//         return res.status(200).send(result)
+//     }
+//     catch (error) {
+//         console.log(error)
+//         return res.status(400).json({errors: error})
+//     }
+// })
 module.exports = router;

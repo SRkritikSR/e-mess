@@ -25,26 +25,25 @@ export const AdminLogin = ({ admin_login, isAuthenticated }) => {
 
   //Redirect if admin looged in
   if (isAuthenticated) {
-    console.log("admin logged in ");
     return <Navigate to="/" />;
   }
   const customGradient = {
 
-    /* fallback for old browsers */
-    background: "#6a11cb",
+    // /* fallback for old browsers */
+    // background: "#6a11cb",
 
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: "-webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
+    // /* Chrome 10-25, Safari 5.1-6 */
+    // background: "-webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: "linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
+    // /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    // background: "linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))",
 
   }
   return (
-    <section style={{ marginTop: "10%" }} >
+    <section >
       <form onSubmit={onSubmit}>
-        <div className="container  h-100">
+        <div className="container mt-0 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
               <div className="card bg-dark text-white" >
