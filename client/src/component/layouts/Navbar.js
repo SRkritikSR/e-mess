@@ -169,16 +169,13 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout, role }) => {
                 <Link className="nav-link" to="/#blog">Menu</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/show_receipt"> Your Orders</Link>
+                <Link className="nav-link" to="/show_order"> Your Orders</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/show_comment"> Your Reviews</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/show_receipt"> Your Receipt</Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" onClick={logout}>Logout</a>
+                <Link className='nav-link' to="/" onClick={()=>logout()}>Logout</Link>
               </li>
             </ul>
           </div>

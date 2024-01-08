@@ -17,7 +17,7 @@ const cors = require('cors');
 const corsOpt = {
     origin: ["http://localhost:3000", "https://e-mess-frontend.onrender.com"],
     credentials: true,
-    methods: ['GET','POST','DELETE'],
+    methods: ['GET','POST','DELETE','PUT'],
     allowedHeaders: ['Content-Type', 'x-auth-token'],
     exposedHeaders: ['Content-Type', 'x-auth-token']
 };
@@ -50,6 +50,7 @@ app.use('/api/commentsection', require('./routes/api/commentsection'))
 app.use('/api/credits',require('./routes/api/credits'))
 app.use('/api/order',require('./routes/api/order'))
 app.use('/api/food',require('./routes/api/food'))
+
 // app.use('/insertFood',require('./insertFood'))
 
 

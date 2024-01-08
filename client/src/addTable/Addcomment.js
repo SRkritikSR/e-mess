@@ -26,7 +26,6 @@ export const Addcomment = ({ auth: { user } }) => {
     
     const userType=localStorage.getItem('role')?localStorage.getItem('role'):"";
     const NewObj = { ...formData, author: user._id, authorType: userType  }
-    console.log(NewObj)
     const config = {
       headers: {
         'Content-Type': 'application/json'

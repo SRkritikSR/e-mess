@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 
 const PrivateRoute = ({
   component: Component,
-  auth: { isAuthenticated, loading }
+  auth: { isAuthenticated, loading,role }
 }) => {
 //   if (loading) return <Spinner />;
-  if (isAuthenticated) return <Component />;
+  if (role=="admin") return <Component />;
 
   return <Navigate to="/login" />;
 };

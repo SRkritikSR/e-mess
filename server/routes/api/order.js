@@ -11,40 +11,61 @@ const config = require('config');
 
 const Order = require('../../models/Order');
 
-router.get('/', async (req, res) => {
-    try {
-      const invoice = await Order.find({});
-      res.json(invoice)
+router.get('/userId/:userId', async (req, res) => {
+    if (req.query.all) {
+        try {
+            const invoice = await Order.find({});
+            res.json(invoice)
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
     }
-    catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-      }
+    else {
+        try {
+            const invoice = await Order.find({ user: req.params.userId });
+            res.json(invoice)
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+    }
 })
-router.post('/', async (req,res)=> {
+router.put('/',async (req,res)=> {
+    try {
+        const result=await Order.findByIdAndUpdate(req.body._id,{isConfirmed: true})
+    }
+    catch (err){
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+})
+router.post('/', async (req, res) => {
     // const errors = validationResult(req);
     // if(!errors.isEmpty()){
     //     return res.status(400).json({ errors : errors.array() });
     // }
     try {
-        
+
         let NewOrder = new Order(
             req.body
-                );
+        );
 
         await NewOrder.save();
 
         const payload = {
-            user : {
-                id : NewOrder.id
-              }
+            user: {
+                id: NewOrder.id
+            }
         }
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server Error');
     }
-    
-}) 
+
+})
 
 
 module.exports = router;

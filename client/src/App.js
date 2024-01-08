@@ -32,7 +32,10 @@ import  Landing2  from './component/layouts/Landing2';
 import AddReceipt from './addTable/AddReceipt';
 import ShowReceipt from './component/dashboard/ShowReceipt';
 import Employee from './component/auth/Employee.js';
+import EmployeeRoute from './component/routing/EmployeeRoute.js';
 import  EmployeeRegister  from './component/auth/EmployeeRegister.js';
+import UserRoute from './component/routing/UserRoute.js';
+import ShowOrder from './component/dashboard/ShowOrder.js';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -66,7 +69,8 @@ const App = () => {
             <Route path="show_comment" element={<Showcomment />} />
             <Route path="add_comment" element={<Addcomment />} />
             <Route path="add_receipt" element={<AddReceipt/>}/>
-            <Route path="show_receipt" element={<ShowReceipt/>}/>
+            <Route path="show_receipt" element={<UserRoute component={ShowReceipt}/>}/>
+            <Route path="show_order" element={<EmployeeRoute component={ShowOrder}/>}/>
             {/* <Route path="homepage" element={<FirstPage />} /> */}
             <Route path="verification" element={<AdminSecondPage />} />
             <Route path="admin_landing" element={<Landing1 />} />

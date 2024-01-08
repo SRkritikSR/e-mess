@@ -39,7 +39,11 @@ const OrderSchema = new mongoose.Schema({
     amount: {
         type: Number
     },
-    confirmed: {
+    isConfirmed: {
+        type: Boolean,
+        default: false,
+    },
+    isCancelled: {
         type: Boolean,
         default: false,
     },
