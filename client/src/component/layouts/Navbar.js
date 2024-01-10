@@ -93,7 +93,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout, role }) => {
   if (role == "admin") {
     return (
       <>
-        <nav className="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10" style={{ backgroundColor: "#343a40" }}>
+        <nav className="custom-navbar navbar navbar-expand-lg navbar-dark sticky-top" data-spy="affix" data-offset-top="10" style={{ backgroundColor: "#343a40" }}>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ backgroundColor: "#343a40" }}>
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -103,13 +103,13 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout, role }) => {
                 <Link className="nav-link" to="/#">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/#about">About</Link>
+                <Link className="nav-link" to="/show_student">Our Students</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/show_employee">Our Employee</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/#about">Welcome <i style={{ color: "black" }}>{isAuthenticated ? (user ? user.name : "blank") : "Logged Out"}</i></Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/add_comment">Edit_Menu</Link>
               </li>
             </ul>
             <Link className="navbar-brand m-auto" to="/#">

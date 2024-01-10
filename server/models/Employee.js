@@ -15,20 +15,24 @@ const EmployeeSchema = new mongoose.Schema({
     phonenum: {
         type: Number,
     },
-    birthyear: {
-        type: Number,
+    birthdate: {
+        type: Date,
     },
     joinedAt: {
         type:Date,
+        default: Date.now
     },
     salary: {
-        type: String,
+        type: Number,
+        default: 0,
     },
     messName: {
         type: String,
+        default: " ",
     },
     role: {
         type: String,
+        default: " ",
     },
     
     

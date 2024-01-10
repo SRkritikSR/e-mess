@@ -122,7 +122,7 @@ const AboutUs = () => {
 }
 
 export const FirstPage = (admin) => {
-    const URL = `${API}/users`;
+    const URL = `${API}/student`;
 
     const [data, getData] = useState([])
     useEffect(() => {

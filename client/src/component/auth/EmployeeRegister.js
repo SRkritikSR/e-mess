@@ -13,10 +13,11 @@ export const EmployeeRegister = ({isAuthenticated, setAlert, employee_register})
     email: '',
     phonenum: NaN,
     password: '',
-    password2: ''
+    password2: '',
+    birthdate: null,
   });
 
-  const { name, email,phonenum, password, password2 } = formData;
+  const { name, email,phonenum, birthdate, password, password2 } = formData;
 
   const onChange = e => setFormData({
     ...formData, [e.target.name]: e.target.value
@@ -69,6 +70,14 @@ export const EmployeeRegister = ({isAuthenticated, setAlert, employee_register})
                     <div className="form-outline form-white mb-4">
                       <input type="tel" className="form-control form-control-lg" placeholder="Phone Number" name="phonenum" value={phonenum} onChange={e => onChange(e)} required />
                       <label className="form-label" >PhoneNumber </label>
+                    </div>
+                    <div className="form-outline form-white mb-4">
+                      <input type="date" id="typePasswordX" className="form-control form-control-lg"
+                        placeholder="birthdate"
+                        name="birthdate"
+                        value={birthdate} onChange={e => onChange(e)} required
+                        />
+                      <label className="form-label" for="typePasswordX">Enter your Birth-Date</label>
                     </div>
                     <div className="form-outline form-white mb-4">
                       <input type="password" id="typePasswordX" className="form-control form-control-lg"

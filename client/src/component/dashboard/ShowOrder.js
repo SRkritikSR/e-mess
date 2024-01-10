@@ -16,7 +16,7 @@ const ShowOrder = ({ auth: { user } }) => {
               'Content-Type': 'application/json'
             }
           }
-        if (window.confirm("Confirm Order")) {
+        if (window. confirm("Confirm Order")) {
             try {
                 const res=await axios.put(`${API}/order/confirmOrder`,{_id: data[index]._id},config)
             }

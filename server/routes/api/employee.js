@@ -9,6 +9,15 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 
 const Employee = require('../../models/Employee');
+router.get('/', async (req,res)=> {
+    try {
+        const result = await Employee.find({})
+        res.status(200).json(result)
+    }
+    catch (error) {
+        res.status(500).json({errors: error})
+    }
+})
 router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
@@ -20,7 +29,7 @@ router.post('/', [
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { name, email, password, phonenum } = req.body;
+        const { name, email, password, phonenum, birthdate } = req.body;
 
         try {
 
@@ -42,6 +51,7 @@ router.post('/', [
                 email,
                 password,
                 phonenum,
+                birthdate,
             });
 
             const salt = await bcrypt.genSalt(10);

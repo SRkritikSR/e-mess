@@ -7,27 +7,32 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types'
 
 export const Register = ({ setAlert, register, isAuthenticated }) => {
-
+  const [selectedBranch, setSelectedBranch] = useState("C.S.E.")
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    year: 0,
+    branch: " ",
     password: '',
     password2: ''
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, year, branch, password, password2 } = formData;
 
   const onChange = e => setFormData({
     ...formData, [e.target.name]: e.target.value
   });
-
+  const onSelectBranch = e => setSelectedBranch(
+    e.target.value
+  )
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Passwords do not match", 'danger');
     }
     else {
-      register({ name, email, password });
+      const branch=selectedBranch
+      register({ name, email, branch, year, password });
     }
   };
 
@@ -70,6 +75,24 @@ export const Register = ({ setAlert, register, isAuthenticated }) => {
                       {/* <input id="typeEmailX" className="form-control form-control-lg" type="text" placeholder="Name" name="name" value={name} onChange={e=>onChange(e)}  required /> */}
                       <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
                       <label className="form-label" for="typeEmailX">Email </label>
+                    </div>
+
+                    <div className="form-outline form-white mb-4">
+                      {/* <input type="email"   placeholder="Email Address" name="email" value={email}  onChange={e=>onChange(e)} required  /> */}
+                      <input className="form-control form-control-lg" type="number" placeholder="year" name="year" value={year} onChange={e => onChange(e)} required min={1} max={4}/>
+                      <label className="form-label" for="typeEmailX">Year</label>
+                    </div>
+
+
+
+                    <div className="form-outline form-white mb-4">
+                      {/* <input type="email"   placeholder="Email Address" name="email" value={email}  onChange={e=>onChange(e)} required  /> */}
+                      <div>
+                        <label className="form-label mx-2" for="typeEmailX"> <input type='radio' value="C.S.E." onChange={(e) => setSelectedBranch(e.target.value)} checked={selectedBranch == "C.S.E." ? true : false} />C.S.E</label>
+                        <label className="form-label mx-2" for="typeEmailX"> <input type='radio' value="E.C.E." checked={selectedBranch == "E.C.E." ? true : false} onChange={(e) => setSelectedBranch(e.target.value)} />E.C.E</label>
+                        <label className="form-label mx-2" for="typeEmailX"> <input type='radio' value="M.C.A." checked={selectedBranch == "M.C.A." ? true : false} onChange={(e) => setSelectedBranch(e.target.value)} />M.C.A</label>
+                      </div>
+                      <label className='form-label mx-2' >Select Branch</label>
                     </div>
 
                     <div className="form-outline form-white mb-4">

@@ -36,6 +36,8 @@ import EmployeeRoute from './component/routing/EmployeeRoute.js';
 import  EmployeeRegister  from './component/auth/EmployeeRegister.js';
 import UserRoute from './component/routing/UserRoute.js';
 import ShowOrder from './component/dashboard/ShowOrder.js';
+import ShowStudent from './component/dashboard/ShowStudent.js';
+import ShowEmployee from './component/dashboard/ShowEmployee.js';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -72,6 +74,8 @@ const App = () => {
             <Route path="show_receipt" element={<UserRoute component={ShowReceipt}/>}/>
             <Route path="show_order" element={<EmployeeRoute component={ShowOrder}/>}/>
             {/* <Route path="homepage" element={<FirstPage />} /> */}
+            <Route path="show_student" element={<PrivateRoute component={ShowStudent}/>}/>
+            <Route path="show_employee" element={<PrivateRoute component={ShowEmployee}/>}/>
             <Route path="verification" element={<AdminSecondPage />} />
             <Route path="admin_landing" element={<Landing1 />} />
             <Route path="user_landing" element={<Landing2 />} />

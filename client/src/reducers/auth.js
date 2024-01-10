@@ -81,7 +81,8 @@ function authReducer(state = initialState, action) {
         ...payload,
         user:null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
+        role: "",
       }
     //   case LOGIN_SUCCESS:
     //     return {

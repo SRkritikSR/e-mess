@@ -37,7 +37,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logger.log'),
 app.use(morgan(':date :method :url :status :res[content-length] - :response-time ms',{stream:accessLogStream}));
 app.use('/api/profile',require('./routes/api/profile'));
 // Register
-app.use('/api/users',require('./routes/api/users'));
+app.use('/api/student',require('./routes/api/student'));
 app.use('/api/employee',require('./routes/api/employee'))
 app.use('/api/admin',require('./routes/api/admin'));
 // Login

@@ -226,6 +226,7 @@ caption {
 }
 
 th {
+  
   text-align: inherit;
 }
 
@@ -1826,6 +1827,7 @@ pre code {
 
 .table th,
 .table td {
+  color: black;
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #495057;

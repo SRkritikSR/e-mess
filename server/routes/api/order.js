@@ -33,7 +33,7 @@ router.get('/userId/:userId', async (req, res) => {
         }
     }
 })
-router.put('/',async (req,res)=> {
+router.put('/confirmOrder',async (req,res)=> {
     try {
         const result=await Order.findByIdAndUpdate(req.body._id,{isConfirmed: true})
     }

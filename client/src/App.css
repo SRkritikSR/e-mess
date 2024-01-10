@@ -292,10 +292,12 @@ button {
 .table td {
   padding: 1rem;
   text-align: left;
+  color: "black"
 }
 
 .table th {
   background: var(--light-color);
+  color: black;
 }
 
 /* Navbar */
