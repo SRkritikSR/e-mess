@@ -69,7 +69,7 @@ export const Addcomment = ({ auth: { user } }) => {
                 <input type="number" id="booktable" className="form-control form-control-lg custom-form-control" placeholder="Rating" name="rating" value={rating} min="1" max="5" onChange={e => onChange(e)} required />
               </div>
             </div>  
-            <input type="submit" className="btn btn-primary" id="rounded-btn" value="Post Reviews" />
+            <input type="submit" className="btn btn-outline-primary" id="rounded-btn" value="Post Reviews" />
           </div>
 
         </div>

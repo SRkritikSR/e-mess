@@ -5,7 +5,9 @@ import { API } from '../../config';
 import axios from 'axios';
 const ShowEmployee = ({ auth: { user } }) => {
     const [edit,setEdit]=useState(false)
+    // editData is essentilay a clone of the employees 
     const [employees, setEmployees] = useState([])
+    useEffect(() => { fetchEmployees() }, [])
     const fetchEmployees = async () => {
         try {
             const result = await axios.get(`${API}/employee?all=true`)
@@ -16,11 +18,21 @@ const ShowEmployee = ({ auth: { user } }) => {
             console.log("Error fetching employee for admin", error)
         }
     }
-    useEffect(() => { fetchEmployees() }, [])
+
+    const editData=(e,index)=> {
+        console.log("dATA EDITING")
+    //   setEmployees((previous)=> {
+    //     const employee=previous[index]
+    //     return {
+    //         ...employee,[e.target.name]:e.target.value
+    //     }
+
+    //   })  
+    }
     return (
         <div className='container w-100 my-1'>
             <div className='row'>
-                <button className={`btn ${edit?"btn-success":"btn-info"} col-sm-3 my-3`} onClick={(e)=> {setEdit((prev)=> !prev)}}>{edit?"Save":"Edit"}</button>
+                <button className={`btn ${edit?"btn-outline-success":"btn-outline-info"} col-sm-3 my-3`} onClick={(e)=> {setEdit((prev)=> !prev)}}>{edit?"Save":"Edit"}</button>
                 <table className='table table-responsive-md' style={{ color: "black" ,overflowX: 'auto'}}>
                     <thead>
                         <tr>
@@ -40,12 +52,12 @@ const ShowEmployee = ({ auth: { user } }) => {
                                 <tr className=''>
                                     <th scope='row'>{index + 1}</th>
                                     <td>{employee.name}</td>
-                                    <td className='text-center' ><input type='text' disabled={!edit} value={employee.messName}/></td>
-                                    <td className='text-center'><input type='text' disabled={!edit} value={employee.role}/></td>
+                                    <td className='text-center' ><input type='text' onChange={(e)=>editData(e,index)} disabled={!edit} name= "messName" value={employee.messName}/></td>
+                                    <td className='text-center'><input type='text'onChange={(e)=>editData(e,index)} disabled={!edit} name="role" value={employee.role}/></td>
                                     <td className='text-center'>{employee.email}</td>
                                     <td className='text-center'>{new Date(employee.date).toLocaleString()}</td>
                                     <td itemType="tel" className='text-center'>{employee.phonenum}</td>
-                                    <td className='text-center'><input type='text' disabled={!edit} value={employee.salary}/></td>
+                                    <td className='text-center'><input type='text' onChange={(e)=>editData(e,index)} disabled={!edit} name="salary" value={employee.salary}/></td>
                                 </tr>
                             )
                         })}

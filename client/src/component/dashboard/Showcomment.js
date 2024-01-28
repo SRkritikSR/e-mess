@@ -5,7 +5,7 @@ import '../tabledata.css';
 import { API } from '../../config';
 
 
-function Showcomment({auth: {user}}) {  
+function Showcomment({auth: {user,role}}) {  
     const [data, getData] = useState([])
     const userId=user?user._id:""
     const URL = `${API}/commentsection/userId/${userId}`
@@ -13,7 +13,9 @@ function Showcomment({auth: {user}}) {
         fetchData()
     },[])
     const fetchData = () => {
-        fetch(URL)
+        let url=URL
+        console.log(user)
+        fetch(url)
             .then((res) =>
                 res.json())
  

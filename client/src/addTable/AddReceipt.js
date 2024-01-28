@@ -104,7 +104,7 @@ const AddReceipt = ({ auth: { user } }) => {
 
                         </table>
 
-                        <button type="submit" class="btn btn-primary" onClick={(e)=> {
+                        <button type="submit" class="btn btn-outline-primary" onClick={(e)=> {
                             return (
                                 onConfirm(e)
                             )

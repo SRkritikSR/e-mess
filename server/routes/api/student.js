@@ -8,13 +8,13 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 
 const Student = require('../../models/Student');
-router.get('/', async (req,res)=> {
+router.get('/',async (req,res)=> {
     try {
-        const result = await Student.find({})
-        res.status(200).json(result)
+        const students=await Student.find({})
+        res.json(students)
     }
     catch (error) {
-        res.status(400).json({errors: error})
+        res.status(400).json({erros: error})
     }
 })
 router.post('/',[

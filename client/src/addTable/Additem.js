@@ -54,7 +54,7 @@ export const Additem = () => {
               <input type="text" id="booktable" className="form-control form-control-lg custom-form-control" placeholder="Item Name" name="item" value={item} onChange={e => onChange(e)} required />
             </div>
           </div>
-          <input type="submit" className="btn btn-primary" id="rounded-btn" value="Add Items " />
+          <input type="submit" className="btn btn-outlline-primary" id="rounded-btn" value="Add Items " />
         </div>
 
       </div>

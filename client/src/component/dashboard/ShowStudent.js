@@ -29,6 +29,8 @@ const ShowStudent = ({ auth: { user } }) => {
                             <th scope='column' className='text-center'>email</th>
                             <th scope='column' className='text-center'>Date Joined</th>
                             <th scope='column' className='text-center'>Credits</th>
+                            <th scope='column' className='text-center'>Remove Student</th>
+
                         </tr>
                     </thead>
                     <tbody>
