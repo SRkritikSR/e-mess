@@ -1,4 +1,4 @@
-  {
+{
   "name": "devconnect",
   "version": "1.0.0",
   "description": "social network for developers",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "concurrently": "^7.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.22",
     "supertest": "^6.2.3"
   }
 }

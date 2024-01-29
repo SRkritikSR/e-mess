@@ -18,6 +18,18 @@ router.get('/', async (req,res)=> {
         res.status(500).json({errors: error})
     }
 })
+router.put('/', async(req,res)=> {
+    try {
+        const updatedEmployee=req.body
+        console.log(`the recieved request contains the following body ${req.body._id}`)
+        const result=await Employee.updateOne({_id: updatedEmployee._id},updatedEmployee )
+        console.log(`employee updated successfully`,result)
+        return res.status(200).json(result)
+    }
+    catch (error) {
+        return res.status(500).json({errors: error})
+    }
+} )
 router.post('/', [
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
