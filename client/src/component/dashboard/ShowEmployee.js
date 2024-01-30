@@ -52,9 +52,7 @@ const ShowEmployee = ({ auth: { user } }) => {
     useEffect(() => { fetchEmployees() }, [])
     const fetchEmployees = async () => {
         try {
-            alert("fetching employee")
             const result = await axios.get(`${API}/employee?all=true`)
-            console.log("The details of all employees fetched are",result)
             if (result.status==200) setEmployees(result.data)
         }
         catch (error) {
@@ -66,7 +64,6 @@ const ShowEmployee = ({ auth: { user } }) => {
         setEditIndex(index)
     } 
     const handleSave=(data)=> {
-        console.log(`Updated employee data is :: ${data}`)
         updateEmployees(data)
         
     }
@@ -78,14 +75,15 @@ const ShowEmployee = ({ auth: { user } }) => {
                 }
             }
             const body=data
-
             const result=await axios.put(`${API}/employee`,body,config)
             if (result.status==200) {
                 const newData=employees
                 newData[editIndex]=body
                 setEmployees(newData)
+                alert("Update Successful")
                 setEditIndex(-1)
             }
+
 
         }
         catch (error) {

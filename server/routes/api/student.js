@@ -17,6 +17,19 @@ router.get('/',async (req,res)=> {
         res.status(400).json({erros: error})
     }
 })
+router.put('/',async(req,res)=> {
+    try {
+    
+        const updatedStudent=req.body
+        const result=await Student.updateOne({_id: updatedStudent._id},updatedStudent )
+        console.log(`Successfullu updated ${result}`)
+        return res.status(200).json(result)
+        
+    }
+    catch (error) {
+        return res.status(400).json({errors: error})
+    }
+})
 router.post('/',[
     check('name','Name is required').not().isEmpty(),
     check('email','Please include a valid email').isEmail(),
